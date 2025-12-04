@@ -2,9 +2,54 @@
 
 **Author: Abhishek Dey**
 
-### Getting Started
 
-* Initialise GIR
+## Create a service account in Google Cloud Storage
+
+* Go to **IAM**
+	 -> **Service Accounts** 
+	 -> **Create service account**
+	 
+* For **role**, select **Storage Object Admin**
+
+* Once Service Account is created, go to **Actions** -> **Manage Keys** -> **Add Key** 
+
+* Download the **KEY in JSON** and keep in a safe place
+ 
+* Download service account credentials key 
+
+```
+gsutil -m cp gs://<bucket-name>/service_account_credentials.json /home/user/
+
+```
+
+* Export service account credentials
+
+```
+export GOOGLE_APPLICATION_CREDENTIALS='/home/user/service_account_credentials.json'
+
+```
+
+## Setup Google Cloud CLI
+
+* Install **Google Cloud CLI** following this [link](https://docs.cloud.google.com/sdk/docs/install-sdk#deb)
+
+* Initialise gcloud cli
+
+```
+gcloud init
+
+```
+
+* If prompted for authentication, use
+
+```
+gcloud auth login --no-browser
+
+```
+
+## Getting Started
+
+* Initialise Git
 
 ```
 git init
@@ -96,41 +141,10 @@ outs:
   path: data
 ```
 
-## Track the changes with git
+### Track the changes with git
 
 ```
 git add data.dvc .gitignore
-
-```
-
-## Create a service account in Google Cloud Storage
-
-* Go to **IAM**
-	 -> **Service Accounts** 
-	 -> **Create service account**
-	 
-* For **role**, select **Storage Object Admin**
-
-* Once Service Account is created, go to **Actions** -> **Manage Keys** -> **Add Key** 
-
-* Download the **KEY in JSON** and keep in a safe place
- 
-
-## Add Google Cloud Storage (GCS) as remote
-
-* Install **Google Cloud CLI** following this [link](https://docs.cloud.google.com/sdk/docs/install-sdk#deb)
-
-* Initialise gcloud cli
-
-```
-gcloud init
-
-```
-
-* If prompted for authentication, use
-
-```
-gcloud auth login --no-browser
 
 ```
 
@@ -146,32 +160,7 @@ dvc remote add -d gcs_remote gs://<bucket-name>/dvc_exp/
 ```
 git add .dvc/config
 
-git commit -m "Added GCS remote"
-
-```
-
-* Download service account credentials key 
-
-```
-gsutil -m cp gs://<bucket-name>/service_account_credentials.json ./
-
-```
-
-* Export service account credentials
-
-```
-export GOOGLE_APPLICATION_CREDENTIALS='service_account_credentials.json'
-
-```
-
-* Add service account credentials to .gitignore
-
-```
-echo "service_account_credentials.json" >> .gitignore
-
-git add .gitignore
-
-git commit -m "Ignore service account credentials"
+git commit -m "Dataset v1: Initial sample"
 
 ```
 
