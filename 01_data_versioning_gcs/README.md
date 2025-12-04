@@ -9,7 +9,7 @@
 	 -> **Service Accounts** 
 	 -> **Create service account**
 	 
-* For **role**, select **Storage Object Admin**
+* For **role**, select **Storage Admin**
 
 * Once Service Account is created, go to **Actions** -> **Manage Keys** -> **Add Key** 
 
@@ -210,4 +210,38 @@ outs:
   hash: md5
   path: data
   
-````
+```
+
+## To download an older version of the data
+
+* Check the commit-id in the git log
+
+```
+git log
+
+```
+
+* git checkout to the older version commit
+
+```
+git checkout 37f466b193aebd7513b1f0a46bf91cda6012803a
+
+```
+
+* Pull the data from gcs
+
+```
+
+dvc pull
+
+```
+
+* Check the downloaded data
+
+```
+cat data/sample.txt 
+
+
+Hello World
+
+```
