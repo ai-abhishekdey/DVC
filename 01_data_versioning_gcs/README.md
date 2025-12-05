@@ -46,20 +46,16 @@ gcloud init
 gcloud auth login --no-browser
 
 ```
-
-## Getting Started
-
-* Initialise Git
+## Initialise dvc project in root repo
 
 ```
-git init
+cd ../
 
-```
-
-* Initialise DVC
-
-```
 dvc init
+
+cd 01_data_versioning_gcs
+
+touch .gitignore
 
 ```
 
