@@ -1,0 +1,6 @@
+[core]
+    remote = az_remote
+['remote "az_remote"']
+    url = azure://ad-workspace/dvc_exp
+    account_name = abhishekdey
+    account_key = CCfAOWH8ewIh/kRpRUVvzDaeRwU7HJlkwchryF9f7iyXzfG7f2IYAWjrIFJjxtcfxGJrtP46qxpI+AStTydY2g==

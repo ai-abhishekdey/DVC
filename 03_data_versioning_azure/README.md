@@ -22,12 +22,20 @@ az --version
 
 ```
 
-* Login using Tenant-ID
+* Login 
 
 ```
-az login --tenant <Tenant-ID>
+az login --use-device-code
 
 ```
+
+* List of Storage Accounts / Blobs
+
+```
+az storage account list -o table
+
+```
+
 
 ## Initialise dvc project in root repo
 
@@ -83,7 +91,12 @@ git commit -m "Dataset v1 azure"
 ## Add azure storage remote & push data
 
 ```
-dvc remote add -d az_remote azure://ad-workspace/dvc_exp
+dvc remote add -d az_remote azure://<container_name>/dvc_exp
+
+dvc remote modify az_remote account_name <your_storage_account_name>
+
+dvc remote modify az_remote account_key <your_storage_account_key>
+
 
 dvc push
 
@@ -131,7 +144,7 @@ git log
 * git checkout to the older version commit
 
 ```
-git checkout 56cbfa64ad012f7162792c5e1e58e443f76258b2
+git checkout 27298b390fe1bf7f1fc679d5d5ffcfe4be5c434erwd
 
 ```
 
