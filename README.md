@@ -19,3 +19,21 @@ conda activate dvc_env
 pip3 install dvc[all]
 
 ```
+
+### Initialize 
+
+
+```
+
+git init
+
+dvc init
+
+```
+* **Note:**  **dvc init** should be done in repository root not insids folders
+
+### Reference
+
+* [DVC Documentation](https://doc.dvc.org/)
+
+
