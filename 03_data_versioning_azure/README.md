@@ -91,12 +91,18 @@ git commit -m "Dataset v1 azure"
 ## Add azure storage remote & push data
 
 ```
-dvc remote add -d az_remote azure://<container_name>/dvc_exp
 
-dvc remote modify az_remote account_name <your_storage_account_name>
+dvc remote add -d azure_remote azure://<container>/<path>
 
-dvc remote modify az_remote account_key <your_storage_account_key>
+dvc remote modify azure_remote account_name <storage_account_name>
 
+dvc remote modify --local azure_remote account_key <storage_account_key>
+
+git add .dvc/config     
+
+git commit -m "Configure Azure DVC remote"
+
+git push
 
 dvc push
 
