@@ -1,0 +1,11 @@
+# Ignore MLflow files
+mlruns/
+mlflow.db
+
+# Ignore logs
+logs/
+
+
+# Ignore environment files
+venv/
+myenv/

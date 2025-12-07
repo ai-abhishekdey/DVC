@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import yaml
 from src.logger import get_logger
@@ -20,6 +21,7 @@ try:
     df = df.dropna()
 
     # Save processed/cleaned data to the specified path
+    os.makedirs("data/processed", exist_ok=True)
     df.to_csv(processed, index=False)
     logger.info(f"Processed data saved -> {processed}")
 

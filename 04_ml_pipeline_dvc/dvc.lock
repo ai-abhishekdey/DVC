@@ -1,0 +1,102 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: PYTHONPATH=. python src/data_ingestion.py
+    deps:
+    - path: params.yaml
+      hash: md5
+      md5: 7915eb19307c54b8549a242b67f528fb
+      size: 279
+    - path: src/data_ingestion.py
+      hash: md5
+      md5: 74321ec5ef032b599e61a7362f05cc10
+      size: 1211
+    outs:
+    - path: data/raw/iris.csv
+      hash: md5
+      md5: 013d0da08d6506664ce640459139176b
+      size: 3858
+  data_preprocessing:
+    cmd: PYTHONPATH=. python src/data_preprocessing.py
+    deps:
+    - path: data/raw/iris.csv
+      hash: md5
+      md5: 013d0da08d6506664ce640459139176b
+      size: 3858
+    - path: params.yaml
+      hash: md5
+      md5: 7915eb19307c54b8549a242b67f528fb
+      size: 279
+    - path: src/data_preprocessing.py
+      hash: md5
+      md5: 6329414a1f7f72e17880f559a3a640e9
+      size: 912
+    outs:
+    - path: data/processed/iris_clean.csv
+      hash: md5
+      md5: 013d0da08d6506664ce640459139176b
+      size: 3858
+  feature_engineering:
+    cmd: PYTHONPATH=. python src/feature_engineering.py
+    deps:
+    - path: data/processed/iris_clean.csv
+      hash: md5
+      md5: 013d0da08d6506664ce640459139176b
+      size: 3858
+    - path: params.yaml
+      hash: md5
+      md5: 7915eb19307c54b8549a242b67f528fb
+      size: 279
+    - path: src/feature_engineering.py
+      hash: md5
+      md5: 1598f8dd730224a96cbc35b8d40bd781
+      size: 1360
+    outs:
+    - path: data/features/iris_features.csv
+      hash: md5
+      md5: 013d0da08d6506664ce640459139176b
+      size: 3858
+  train:
+    cmd: PYTHONPATH=. python src/train.py
+    deps:
+    - path: data/features/iris_features.csv
+      hash: md5
+      md5: 013d0da08d6506664ce640459139176b
+      size: 3858
+    - path: params.yaml
+      hash: md5
+      md5: 7915eb19307c54b8549a242b67f528fb
+      size: 279
+    - path: src/train.py
+      hash: md5
+      md5: ea6d7a85bcaef9c35032f9856c5a09e2
+      size: 2345
+    outs:
+    - path: metrics/preds.csv
+      hash: md5
+      md5: 942b9a402bb04975df511627a79ae91e
+      size: 572
+    - path: models/model.pkl
+      hash: md5
+      md5: ba95cfa68001af9f0e33fa83ebb0c209
+      size: 177384
+  evaluate:
+    cmd: PYTHONPATH=. python src/eval.py
+    deps:
+    - path: metrics/preds.csv
+      hash: md5
+      md5: 942b9a402bb04975df511627a79ae91e
+      size: 572
+    - path: params.yaml
+      hash: md5
+      md5: 7915eb19307c54b8549a242b67f528fb
+      size: 279
+    - path: src/eval.py
+      hash: md5
+      md5: 73d97ea9f49361e7d6c5ba74bfad36cd
+      size: 1014
+    outs:
+    - path: metrics/score.txt
+      hash: md5
+      md5: 98937548d721445b2095fb13deb756d7
+      size: 13

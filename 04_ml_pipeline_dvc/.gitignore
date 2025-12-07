@@ -1,0 +1,18 @@
+# Ignore generated data and artifacts
+data/
+logs/
+models/
+metrics/
+
+# Ignore MLflow experiment tracking
+mlruns/
+mlflow.db
+
+# Ignore virtual environments
+venv/
+myenv/
+
+# Editor / cache folders
+__pycache__/
+.vscode/
+*.pyc

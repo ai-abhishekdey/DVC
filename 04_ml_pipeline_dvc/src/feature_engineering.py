@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import yaml
 from src.logger import get_logger
@@ -30,6 +31,7 @@ try:
     X[target] = df[target]
 
     # Save engineered feature dataset to the specified path
+    os.makedirs("data/features", exist_ok=True)
     X.to_csv(features, index=False)
     logger.info(f"Feature dataset saved -> {features}")
 

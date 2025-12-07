@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import yaml
 import pickle
@@ -43,10 +44,12 @@ try:
         model.fit(X_train, y_train)
 
         # Predict on the test set and save predictions
+        os.makedirs("metrics", exist_ok=True)
         preds = model.predict(X_test)
         pd.DataFrame({"y_true": y_test, "y_pred": preds}).to_csv("metrics/preds.csv", index=False)
 
         # Save the trained model as a .pkl file
+        os.makedirs("models", exist_ok=True)
         pickle.dump(model, open("models/model.pkl", "wb"))
 
         # Log hyperparameters and the trained model artifact to MLflow
