@@ -1,0 +1,12 @@
+data:
+  url: https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv
+  raw: data/raw/iris.csv
+  processed: data/processed/iris_clean.csv
+  features: data/features/iris_features.csv
+
+model:
+  target: species
+  test_size: 0.2
+  random_state: 42
+  n_estimators: 100
+
